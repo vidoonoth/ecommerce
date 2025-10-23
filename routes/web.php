@@ -39,5 +39,5 @@ Route::middleware('auth')->group(function () {
 // Customer product route
 Route::get('/products', [CustomerProductController::class, 'index'])->name('customer.products.index');
 
-require __DIR__.'/auth.php';
-require __DIR__.'/admin.php';
+require __DIR__ . '/auth.php';
+require __DIR__ . '/admin.php';
