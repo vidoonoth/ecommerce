@@ -64,10 +64,10 @@
                     <div
                         class="flex flex-col items-center bg-white rounded-xl shadow hover:shadow-lg p-6 transition cursor-pointer group">
                         <div class="bg-blue-100 p-4 rounded-full mb-2 group-hover:bg-blue-200">
-                            <img src="https://img.icons8.com/ios-filled/50/000000/casual-shoes.png" alt="Casual"
+                            <img src="https://img.icons8.com/?size=100&id=jnXxLIuR2wXW&format=png&color=000000" alt="Lifestyle"
                                 class="w-8 h-8">
                         </div>
-                        <span class="font-semibold text-gray-700">Casual</span>
+                        <span class="font-semibold text-gray-700">Lifestyle</span>
                     </div>
                 </div>
             </div>
@@ -107,11 +107,11 @@
                         @endforeach
                     </div>
                     <button id="prev-btn" aria-label="Previous"
-                        class="absolute left-1 top-1/2 transform bg-black/70 text-white p-2 rounded-full shadow-md focus:outline-none">
+                        class="absolute left-1 top-1/2 transform bg-slate-100 hover:bg-slate-300 text-black p-2 rounded-full shadow-md focus:outline-none">
                         &larr;
                     </button>
                     <button id="next-btn" aria-label="Next"
-                        class="absolute right-1 top-1/2 transform bg-black/70 text-white p-2 rounded-full shadow-md focus:outline-none">
+                        class="absolute right-1 top-1/2 transform bg-slate-100 hover:bg-slate-300 text-black p-2 rounded-full shadow-md focus:outline-none">
                         &rarr;
                     </button>
                 </div>
