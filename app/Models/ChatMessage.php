@@ -13,6 +13,12 @@ class ChatMessage extends Model
         'message',
         'read_at',
     ];
-    public function user() { return $this->belongsTo(User::class, 'user_id'); }
-    public function recipient() { return $this->belongsTo(User::class, 'recipient_id'); }
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'user_id');
+    }
+    public function recipient()
+    {
+        return $this->belongsTo(User::class, 'recipient_id');
+    }
 }

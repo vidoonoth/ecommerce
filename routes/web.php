@@ -34,8 +34,8 @@ Route::middleware('auth')->group(function () {
 
     // Order routes
     Route::get('/orders', [OrderController::class, 'index'])->name('orders.index');
-        Route::get('/chat', [ChatController::class, 'index'])->name('chat.index');
-        Route::post('/chat', [ChatController::class, 'store'])->name('chat.store');
+    Route::get('/chat', [ChatController::class, 'index'])->name('chat.index');
+    Route::post('/chat', [ChatController::class, 'store'])->name('chat.store');
 });
 
 

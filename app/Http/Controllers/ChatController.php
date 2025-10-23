@@ -12,9 +12,9 @@ class ChatController extends Controller
     {
         $userId = Auth::id();
         $recipientId = $request->input('recipient_id');
-        $messages = ChatMessage::where(function($q) use ($userId, $recipientId) {
+        $messages = ChatMessage::where(function ($q) use ($userId, $recipientId) {
             $q->where('user_id', $userId)->where('recipient_id', $recipientId);
-        })->orWhere(function($q) use ($userId, $recipientId) {
+        })->orWhere(function ($q) use ($userId, $recipientId) {
             $q->where('user_id', $recipientId)->where('recipient_id', $userId);
         })->orderBy('created_at')->get();
         return response()->json($messages);

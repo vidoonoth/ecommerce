@@ -309,21 +309,22 @@
         });
     </script>
 
-@auth
-    @php
-        // Tentukan recipient_id (CS atau user lain)
-        $recipientId = auth()->user()->is_cs ?? false
-            ? App\Models\User::where('is_cs', false)->first()->id ?? 1
-            : App\Models\User::where('is_cs', true)->first()->id ?? 1;
-    @endphp
-    <script>
-        window.Laravel = {
-            user: @json(auth()->user()),
-            chatRecipientId: {{ $recipientId }},
-            pusherKey: '{{ config('broadcasting.connections.pusher.key') }}',
-            pusherCluster: '{{ config('broadcasting.connections.pusher.options.cluster') }}'
-        };
-    </script>
-    @include('components.chat')
-@endauth
+    @auth
+        @php
+            // Tentukan recipient_id (CS atau user lain)
+            $recipientId =
+                auth()->user()->is_cs ?? false
+                    ? App\Models\User::where('is_cs', false)->first()->id ?? 1
+                    : App\Models\User::where('is_cs', true)->first()->id ?? 1;
+        @endphp
+        <script>
+            window.Laravel = {
+                user: @json(auth()->user()),
+                chatRecipientId: {{ $recipientId }},
+                pusherKey: '{{ config('broadcasting.connections.pusher.key') }}',
+                pusherCluster: '{{ config('broadcasting.connections.pusher.options.cluster') }}'
+            };
+        </script>
+        @include('components.chat')
+    @endauth
 </x-app-layout>
