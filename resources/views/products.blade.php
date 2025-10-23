@@ -22,10 +22,13 @@
                             <p class="text-gray-600 mb-4">{{ Str::limit($product->description, 100) }}</p>
                             <div class="flex items-center justify-between">
                                 <span class="text-xl font-bold text-gray-900">Rp{{ number_format($product->price, 0, ',', '.') }}</span>
-                                <button
-                                    class="bg-blue-400 text-white px-4 py-2 rounded hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500">
-                                    Add to Cart
-                                </button>
+                                <form action="{{ route('cart.add', $product) }}" method="POST">
+                                    @csrf
+                                    <button type="submit"
+                                        class="bg-blue-400 text-white px-4 py-2 rounded hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                                        Add to Cart
+                                    </button>
+                                </form>
                             </div>
                         </div>
                     @endforeach
@@ -77,10 +80,13 @@
                                 <p class="text-gray-600 mb-4">${product.description.substring(0, 100)}</p>
                                 <div class="flex items-center justify-between">
                                     <span class="text-xl font-bold text-gray-900">Rp${new Intl.NumberFormat('id-ID').format(product.price)}</span>
-                                    <button
-                                        class="bg-blue-400 text-white px-4 py-2 rounded hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500">
-                                        Add to Cart
-                                    </button>
+                                    <form action="/cart/add/${product.id}" method="POST">
+                                        @csrf
+                                        <button type="submit"
+                                            class="bg-blue-400 text-white px-4 py-2 rounded hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                                            Add to Cart
+                                        </button>
+                                    </form>
                                 </div>
                             </div>
                         `;
