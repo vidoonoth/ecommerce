@@ -52,11 +52,13 @@
                 <div class="shrink-0 flex items-center">
                     @auth('admin')
                         <a href="{{ route('admin.dashboard') }}">
-                            <x-application-logo class="block h-9 w-auto fill-current text-gray-800" />
+                            {{-- <x-application-logo class="block h-9 w-auto fill-current text-gray-800" /> --}}
+                            <p class="font-bold text-2xl">Vorise</p>
                         </a>
                     @else
                         <a href="{{ route('dashboard') }}">
-                            <x-application-logo class="block h-9 w-auto fill-current text-gray-800" />
+                            {{-- <x-application-logo class="block h-9 w-auto fill-current text-gray-800" /> --}}
+                            <p class="font-bold text-2xl">Vorise</p>
                         </a>
                     @endauth
                 </div>
