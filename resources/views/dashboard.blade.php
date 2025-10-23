@@ -14,7 +14,7 @@
                 <div class="flex flex-col md:flex-row items-center justify-between px-8 py-10">
                     <div class="flex-1">
                         <h1 class="text-3xl md:text-5xl font-bold text-gray-900 mb-4">Selamat Datang di <span
-                                class="text-blue-500">Sepatu Store</span></h1>
+                                class="text-blue-500">Vorise</span></h1>
                         <p class="text-lg text-gray-600 mb-6">Temukan sepatu terbaik untuk gaya dan aktivitasmu. Promo
                             diskon hingga <span class="font-bold text-blue-600">50%</span> hari ini!</p>
                         <a href="#all-products"
@@ -22,8 +22,13 @@
                             Sekarang</a>
                     </div>
                     <div class="flex-1 flex justify-center md:justify-end">
-                        <img src="https://img.icons8.com/ios-filled/150/000000/sneakers.png" alt="Sepatu"
-                            class="w-40 h-40 md:w-56 md:h-56 object-contain drop-shadow-xl">
+                        <div class="relative w-40 h-40 md:w-56 md:h-56">
+                            @php $heroImages = $products->take(3); @endphp
+                            @foreach ($heroImages as $i => $product)
+                                <img src="{{ asset('storage/' . $product->image) }}" alt="{{ $product->name }}"
+                                    class="hero-slide absolute top-0 left-0 w-full h-full object-contain drop-shadow-xl rounded-xl transition-all duration-700 ease-in-out {{ $i === 0 ? 'opacity-100 translate-x-0 z-10' : 'opacity-0 translate-x-10 z-0' }}">
+                            @endforeach
+                        </div>
                     </div>
                 </div>
             </div>
@@ -239,6 +244,23 @@
             }
             updateControls();
             window.addEventListener('resize', updateControls);
+        });
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const slides = document.querySelectorAll('.hero-slide');
+            let current = 0;
+            setInterval(() => {
+                slides.forEach((img, i) => {
+                    if (i === current) {
+                        img.classList.remove('opacity-0', 'translate-x-10', 'z-0');
+                        img.classList.add('opacity-100', 'translate-x-0', 'z-10');
+                    } else {
+                        img.classList.remove('opacity-100', 'translate-x-0', 'z-10');
+                        img.classList.add('opacity-0', 'translate-x-10', 'z-0');
+                    }
+                });
+                current = (current + 1) % slides.length;
+            }, 2500);
         });
     </script>
 </x-app-layout>
