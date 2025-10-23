@@ -107,55 +107,13 @@
                         @endforeach
                     </div>
                     <button id="prev-btn" aria-label="Previous"
-                        class="absolute left-1 top-1/2 transform bg-black/70 text-white p-2 rounded-full shadow-md focus:outline-none hidden sm:block">
+                        class="absolute left-1 top-1/2 transform bg-black/70 text-white p-2 rounded-full shadow-md focus:outline-none">
                         &larr;
                     </button>
                     <button id="next-btn" aria-label="Next"
-                        class="absolute right-1 top-1/2 transform bg-black/70 text-white p-2 rounded-full shadow-md focus:outline-none hidden sm:block">
+                        class="absolute right-1 top-1/2 transform bg-black/70 text-white p-2 rounded-full shadow-md focus:outline-none">
                         &rarr;
                     </button>
-                </div>
-            </div>
-
-
-            {{-- TESTIMONI --}}
-            <div class="mt-12 mb-8">
-                <h2 class="text-2xl font-bold text-gray-900 mb-4">Testimoni Pelanggan</h2>
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                    <div class="bg-white rounded-xl shadow p-6 flex flex-col items-center">
-                        <img src="https://randomuser.me/api/portraits/men/32.jpg" class="w-16 h-16 rounded-full mb-2"
-                            alt="User">
-                        <p class="text-gray-700 text-center mb-2 italic">"Sepatunya nyaman banget, pengiriman cepat!"
-                        </p>
-                        <div class="flex gap-1 mb-1">
-                            <span class="text-yellow-400">★</span><span class="text-yellow-400">★</span><span
-                                class="text-yellow-400">★</span><span class="text-yellow-400">★</span><span
-                                class="text-yellow-400">★</span>
-                        </div>
-                        <span class="text-sm text-gray-500">- Andi, Jakarta</span>
-                    </div>
-                    <div class="bg-white rounded-xl shadow p-6 flex flex-col items-center">
-                        <img src="https://randomuser.me/api/portraits/women/44.jpg" class="w-16 h-16 rounded-full mb-2"
-                            alt="User">
-                        <p class="text-gray-700 text-center mb-2 italic">"Modelnya keren, cocok buat hangout!"</p>
-                        <div class="flex gap-1 mb-1">
-                            <span class="text-yellow-400">★</span><span class="text-yellow-400">★</span><span
-                                class="text-yellow-400">★</span><span class="text-yellow-400">★</span><span
-                                class="text-yellow-400">★</span>
-                        </div>
-                        <span class="text-sm text-gray-500">- Sari, Bandung</span>
-                    </div>
-                    <div class="bg-white rounded-xl shadow p-6 flex flex-col items-center">
-                        <img src="https://randomuser.me/api/portraits/men/65.jpg" class="w-16 h-16 rounded-full mb-2"
-                            alt="User">
-                        <p class="text-gray-700 text-center mb-2 italic">"Harga terjangkau, kualitas mantap!"</p>
-                        <div class="flex gap-1 mb-1">
-                            <span class="text-yellow-400">★</span><span class="text-yellow-400">★</span><span
-                                class="text-yellow-400">★</span><span class="text-yellow-400">★</span><span
-                                class="text-yellow-400">★</span>
-                        </div>
-                        <span class="text-sm text-gray-500">- Budi, Surabaya</span>
-                    </div>
                 </div>
             </div>
 
@@ -178,8 +136,8 @@
                             sesuai.</span>
                     </div>
                     <div class="flex flex-col items-center bg-white rounded-xl shadow p-6">
-                        <img src="https://img.icons8.com/ios-filled/50/000000/price-tag-euro.png"
-                            class="w-10 h-10 mb-2" alt="Harga Terbaik">
+                        <img src="https://img.icons8.com/ios-filled/50/000000/price-tag-euro.png" class="w-10 h-10 mb-2"
+                            alt="Harga Terbaik">
                         <span class="font-semibold text-gray-700 mb-1">Harga Terbaik</span>
                         <span class="text-sm text-gray-500 text-center">Diskon dan promo menarik setiap minggu.</span>
                     </div>
@@ -188,6 +146,47 @@
                             class="w-10 h-10 mb-2" alt="Support">
                         <span class="font-semibold text-gray-700 mb-1">Support 24/7</span>
                         <span class="text-sm text-gray-500 text-center">Tim CS siap membantu kapan saja.</span>
+                    </div>
+                </div>
+            </div>
+
+            {{-- TESTIMONI --}}
+            <div class="mt-12 mb-8">
+                <h2 class="text-2xl font-bold text-gray-900 mb-4">Testimoni Pelanggan</h2>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <div class="bg-white rounded-xl shadow p-6 flex flex-col items-center">
+                        <img src="https://randomuser.me/api/portraits/men/32.jpg" class="w-16 h-16 rounded-full mb-2"
+                            alt="User">
+                        <p class="text-gray-700 text-center mb-2 italic">"Sepatunya nyaman banget, pengiriman cepat!"
+                        </p>
+                        <div class="flex gap-1 mb-1">
+                            <span class="text-yellow-400">★</span><span class="text-yellow-400">★</span><span
+                                class="text-yellow-400">★</span><span class="text-yellow-400">★</span><span
+                                class="text-yellow-400">★</span>
+                        </div>
+                        <span class="text-sm text-gray-500">- Andi, Jakarta</span>
+                    </div>
+                    <div class="bg-white rounded-xl shadow p-6 flex flex-col items-center">
+                        <img src="https://randomuser.me/api/portraits/women/44.jpg"
+                            class="w-16 h-16 rounded-full mb-2" alt="User">
+                        <p class="text-gray-700 text-center mb-2 italic">"Modelnya keren, cocok buat hangout!"</p>
+                        <div class="flex gap-1 mb-1">
+                            <span class="text-yellow-400">★</span><span class="text-yellow-400">★</span><span
+                                class="text-yellow-400">★</span><span class="text-yellow-400">★</span><span
+                                class="text-yellow-400">★</span>
+                        </div>
+                        <span class="text-sm text-gray-500">- Sari, Bandung</span>
+                    </div>
+                    <div class="bg-white rounded-xl shadow p-6 flex flex-col items-center">
+                        <img src="https://randomuser.me/api/portraits/men/65.jpg" class="w-16 h-16 rounded-full mb-2"
+                            alt="User">
+                        <p class="text-gray-700 text-center mb-2 italic">"Harga terjangkau, kualitas mantap!"</p>
+                        <div class="flex gap-1 mb-1">
+                            <span class="text-yellow-400">★</span><span class="text-yellow-400">★</span><span
+                                class="text-yellow-400">★</span><span class="text-yellow-400">★</span><span
+                                class="text-yellow-400">★</span>
+                        </div>
+                        <span class="text-sm text-gray-500">- Budi, Surabaya</span>
                     </div>
                 </div>
             </div>
@@ -201,6 +200,20 @@
             <p>&copy; 2025 Vorise. All rights reserved.</p>
         </div>
     </footer>
+
+    {{-- MODAL DETAIL PRODUK --}}
+    <div id="product-modal" class="fixed inset-0 z-50 items-center justify-center bg-black bg-opacity-40 hidden">
+        <div class="bg-white rounded-xl shadow-lg max-w-sm w-full p-6 relative">
+            <button id="close-modal"
+                class="absolute top-2 right-2 text-gray-400 hover:text-gray-700 text-2xl font-bold">&times;</button>
+            <img id="modal-image" src="" alt="" class="w-full h-40 object-contain rounded mb-4">
+            <h3 id="modal-name" class="text-xl font-bold mb-2"></h3>
+            <p id="modal-desc" class="text-gray-600 mb-4"></p>
+            <div class="flex items-center justify-between">
+                <span id="modal-price" class="text-lg font-bold text-gray-900"></span>
+            </div>
+        </div>
+    </div>
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
@@ -236,14 +249,6 @@
             prevBtn.addEventListener('click', function() {
                 scrollStep(-1);
             });
-
-            function updateControls() {
-                const show = window.innerWidth >= 640;
-                prevBtn.classList.toggle('hidden', !show);
-                nextBtn.classList.toggle('hidden', !show);
-            }
-            updateControls();
-            window.addEventListener('resize', updateControls);
         });
 
         document.addEventListener('DOMContentLoaded', function() {
@@ -261,6 +266,46 @@
                 });
                 current = (current + 1) % slides.length;
             }, 2500);
+        });
+
+        document.addEventListener('DOMContentLoaded', function() {
+            // Modal logic
+            const modal = document.getElementById('product-modal');
+            const closeModal = document.getElementById('close-modal');
+            const modalImage = document.getElementById('modal-image');
+            const modalName = document.getElementById('modal-name');
+            const modalDesc = document.getElementById('modal-desc');
+            const modalPrice = document.getElementById('modal-price');
+            // Card click event
+            document.querySelectorAll('#product-carousel .snap-start').forEach(card => {
+                card.addEventListener('click', function(e) {
+                    // Prevent modal if Add button or form is clicked
+                    if (e.target.closest('form') || e.target.closest('button')) return;
+                    const img = card.querySelector('img');
+                    const name = card.querySelector('h3').textContent;
+                    const desc = card.querySelector('p').textContent;
+                    const price = card.querySelector('span').textContent;
+                    modalImage.src = img.src;
+                    modalImage.alt = name;
+                    modalName.textContent = name;
+                    modalDesc.textContent = desc;
+                    modalPrice.textContent = price;
+                    modal.classList.remove('hidden');
+                    modal.classList.add('flex');
+                });
+            });
+            // Close modal
+            closeModal.addEventListener('click', function() {
+                modal.classList.add('hidden');
+                modal.classList.remove('flex');
+            });
+            // Click outside modal
+            modal.addEventListener('click', function(e) {
+                if (e.target === modal) {
+                    modal.classList.add('hidden');
+                    modal.classList.remove('flex');
+                }
+            });
         });
     </script>
 </x-app-layout>
