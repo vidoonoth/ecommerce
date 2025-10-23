@@ -7,6 +7,7 @@ use App\Http\Controllers\CartController;
 use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\ChatController;
 
 Route::get('/', function () {
     return view('dashboard');
@@ -33,6 +34,8 @@ Route::middleware('auth')->group(function () {
 
     // Order routes
     Route::get('/orders', [OrderController::class, 'index'])->name('orders.index');
+        Route::get('/chat', [ChatController::class, 'index'])->name('chat.index');
+        Route::post('/chat', [ChatController::class, 'store'])->name('chat.store');
 });
 
 
