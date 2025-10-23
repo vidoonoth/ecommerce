@@ -9,6 +9,23 @@ use App\Http\Controllers\OrderController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ChatController;
 
+use Illuminate\Support\Facades\Auth;
+
+Route::get('/cs-chat', function () {
+    if (Auth::user()->is_cs ?? false) {
+        return view('cs_chat');
+    }
+    abort(403);
+})->middleware(['auth'])->name('cs.chat');
+Route::middleware(['auth'])->group(function () {
+    Route::get('/cs-chat', function () {
+        if (Auth::user()->is_cs ?? false) {
+            return view('cs_chat');
+        }
+        abort(403);
+    })->name('cs.chat');
+});
+
 Route::get('/', function () {
     return view('dashboard');
 });
