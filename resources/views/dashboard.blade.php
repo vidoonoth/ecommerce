@@ -320,7 +320,7 @@
         <script>
             window.Laravel = {
                 user: @json(auth()->user()),
-                chatRecipientId: {{ $recipientId }},
+                chatRecipientId: {{ auth()->user()->is_cs ? 'null' : $recipientId }},
                 pusherKey: '{{ config('broadcasting.connections.pusher.key') }}',
                 pusherCluster: '{{ config('broadcasting.connections.pusher.options.cluster') }}'
             };

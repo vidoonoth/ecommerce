@@ -30,6 +30,13 @@ class DatabaseSeeder extends Seeder
             'is_cs' => false,
         ]);
 
+        User::factory()->create([
+            'name' => 'a',
+            'email' => 'a@example.com',
+            'password' => bcrypt('password'),
+            'is_cs' => false,
+        ]);
+
         $this->call([
             AdminSeeder::class,
             CategorySeeder::class,

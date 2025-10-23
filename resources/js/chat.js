@@ -10,10 +10,13 @@ window.Echo = new Echo({
     forceTLS: true,
 });
 
+
 const userId = window.Laravel.user.id;
-const recipientId = window.Laravel.chatRecipientId;
+let recipientId = window.Laravel.chatRecipientId;
+let echoListeners = [];
 
 function fetchMessages() {
+    if (!recipientId || recipientId === 'null') return;
     fetch(`/chat?recipient_id=${recipientId}`)
         .then(res => res.json())
         .then(messages => {
@@ -29,11 +32,27 @@ function fetchMessages() {
         });
 }
 
+function resetListeners() {
+    echoListeners.forEach(l => l.stopListening('ChatMessageSent'));
+    echoListeners = [];
+    if (!recipientId || recipientId === 'null') return;
+    echoListeners.push(window.Echo.private(`chat.${userId}.${recipientId}`)
+        .listen('ChatMessageSent', (e) => {
+            fetchMessages();
+        })
+    );
+    echoListeners.push(window.Echo.private(`chat.${recipientId}.${userId}`)
+        .listen('ChatMessageSent', (e) => {
+            fetchMessages();
+        })
+    );
+}
+
 document.getElementById('chat-form').addEventListener('submit', function(e) {
     e.preventDefault();
     const input = document.getElementById('chat-input');
     const message = input.value.trim();
-    if (!message) return;
+    if (!message || !recipientId || recipientId === 'null') return;
     fetch('/chat', {
         method: 'POST',
         headers: {
@@ -47,14 +66,17 @@ document.getElementById('chat-form').addEventListener('submit', function(e) {
     });
 });
 
-window.Echo.private(`chat.${userId}.${recipientId}`)
-    .listen('ChatMessageSent', (e) => {
-        fetchMessages();
+if (document.getElementById('chat-user-list')) {
+    document.querySelectorAll('.chat-user-item').forEach(item => {
+        item.addEventListener('click', function() {
+            recipientId = this.getAttribute('data-user-id');
+            fetchMessages();
+            resetListeners();
+        });
     });
+}
 
-window.Echo.private(`chat.${recipientId}.${userId}`)
-    .listen('ChatMessageSent', (e) => {
-        fetchMessages();
-    });
-
-fetchMessages();
+if (recipientId && recipientId !== 'null') {
+    fetchMessages();
+    resetListeners();
+}
