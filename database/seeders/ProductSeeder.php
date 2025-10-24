@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Brand;
 use App\Models\Category;
 use App\Models\Product;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
@@ -15,48 +16,15 @@ class ProductSeeder extends Seeder
      */
     public function run(): void
     {
-        $categories = Category::all();
+        // Ensure categories exist or create them
+        $shoesCategory = Category::firstOrCreate(['name' => 'Shoes'], ['slug' => Str::slug('Shoes')]);
+        $jordanCategory = Category::firstOrCreate(['name' => 'jordan'], ['slug' => Str::slug('jordan')]);
+        $lifestyleCategory = Category::firstOrCreate(['name' => 'lifestyle'], ['slug' => Str::slug('lifestyle')]);
 
-        // Ensure 'Shoes' category exists or create it
-        $shoesCategory = $categories->where('name', 'Shoes')->first();
-        if (!$shoesCategory) {
-            $shoesCategory = Category::create([
-                'name' => 'Shoes',
-                'slug' => Str::slug('Shoes'),
-            ]);
-            $categories->push($shoesCategory); // Add to collection for immediate use
-        }
-
-        // Ensure 'Nike' category exists or create it
-        $nikeCategory = $categories->where('name', 'Nike')->first();
-        if (!$nikeCategory) {
-            $nikeCategory = Category::create([
-                'name' => 'Nike',
-                'slug' => Str::slug('Nike'),
-            ]);
-            $categories->push($nikeCategory);
-        }
-
-        // Ensure 'Adidas' category exists or create it
-        $adidasCategory = $categories->where('name', 'Adidas')->first();
-        if (!$adidasCategory) {
-            $adidasCategory = Category::create([
-                'name' => 'Adidas',
-                'slug' => Str::slug('Adidas'),
-            ]);
-            $categories->push($adidasCategory);
-        }
-
-        // Ensure 'Vans' category exists or create it
-        $vansCategory = $categories->where('name', 'Vans')->first();
-        if (!$vansCategory) {
-            $vansCategory = Category::create([
-                'name' => 'Vans',
-                'slug' => Str::slug('Vans'),
-            ]);
-            $categories->push($vansCategory);
-        }
-
+        // Ensure brands exist or create them
+        $nikeBrand = Brand::firstOrCreate(['name' => 'Nike']);
+        $adidasBrand = Brand::firstOrCreate(['name' => 'Adidas']);
+        $vansBrand = Brand::firstOrCreate(['name' => 'Vans']);
 
         $products = [
             [
@@ -65,7 +33,8 @@ class ProductSeeder extends Seeder
                 'price' => 150.00,
                 'stock' => 50,
                 'image' => 'products/nike_air_jordan_1_2022.png',
-                'category' => 'Nike',
+                'category_id' => $jordanCategory->id,
+                'brand_id' => $nikeBrand->id,
             ],
             [
                 'name' => 'Nike Air VaporMax Plus',
@@ -73,7 +42,8 @@ class ProductSeeder extends Seeder
                 'price' => 130.00,
                 'stock' => 45,
                 'image' => 'products/nike_air_vapormax_plus.png',
-                'category' => 'Nike',
+                'category_id' => $lifestyleCategory->id,
+                'brand_id' => $nikeBrand->id,
             ],
             [
                 'name' => 'Jordan Tatum 4',
@@ -81,7 +51,8 @@ class ProductSeeder extends Seeder
                 'price' => 180.00,
                 'stock' => 40,
                 'image' => 'products/jordan_tatum_4.png',
-                'category' => 'Nike',
+                'category_id' => $shoesCategory->id,
+                'brand_id' => $nikeBrand->id,
             ],
             [
                 'name' => 'Nike Blazer Low Platform',
@@ -89,7 +60,8 @@ class ProductSeeder extends Seeder
                 'price' => 100.00,
                 'stock' => 60,
                 'image' => 'products/nike_blazer_low_platform.png',
-                'category' => 'Nike',
+                'category_id' => $shoesCategory->id,
+                'brand_id' => $nikeBrand->id,
             ],
             [
                 'name' => 'Jordan CMFT Era',
@@ -97,7 +69,8 @@ class ProductSeeder extends Seeder
                 'price' => 160.00,
                 'stock' => 55,
                 'image' => 'products/jordan_cmft_era.png',
-                'category' => 'Nike',
+                'category_id' => $shoesCategory->id,
+                'brand_id' => $nikeBrand->id,
             ],
             [
                 'name' => 'Air Jordan 1 High G',
@@ -105,7 +78,8 @@ class ProductSeeder extends Seeder
                 'price' => 140.00,
                 'stock' => 48,
                 'image' => 'products/air_jordan_1_high_g.png',
-                'category' => 'Nike',
+                'category_id' => $shoesCategory->id,
+                'brand_id' => $nikeBrand->id,
             ],
             [
                 'name' => 'Tatum 3 PF Sidewalk Chalk',
@@ -113,7 +87,8 @@ class ProductSeeder extends Seeder
                 'price' => 80.00,
                 'stock' => 70,
                 'image' => 'products/tatum_3_pf_sidewalk_chalk.png',
-                'category' => 'Nike',
+                'category_id' => $shoesCategory->id,
+                'brand_id' => $nikeBrand->id,
             ],
             [
                 'name' => 'Air Jordan 1 Low SE',
@@ -121,7 +96,8 @@ class ProductSeeder extends Seeder
                 'price' => 90.00,
                 'stock' => 65,
                 'image' => 'products/air_jordan_1_low_se.png',
-                'category' => 'Nike',
+                'category_id' => $shoesCategory->id,
+                'brand_id' => $nikeBrand->id,
             ],
             [
                 'name' => 'Jordan Tatum 4 PF',
@@ -129,7 +105,8 @@ class ProductSeeder extends Seeder
                 'price' => 70.00,
                 'stock' => 80,
                 'image' => 'products/tatum_4_pf.png',
-                'category' => 'Nike',
+                'category_id' => $shoesCategory->id,
+                'brand_id' => $nikeBrand->id,
             ],
             [
                 'name' => 'Air Jordan 1 Mid',
@@ -137,7 +114,8 @@ class ProductSeeder extends Seeder
                 'price' => 75.00,
                 'stock' => 75,
                 'image' => 'products/air_jordan_1_mid.png',
-                'category' => 'Nike',
+                'category_id' => $shoesCategory->id,
+                'brand_id' => $nikeBrand->id,
             ],
             [
                 'name' => 'Jumpman MVP',
@@ -145,7 +123,8 @@ class ProductSeeder extends Seeder
                 'price' => 60.00,
                 'stock' => 90,
                 'image' => 'products/jumpman_mvp.png',
-                'category' => 'Nike',
+                'category_id' => $shoesCategory->id,
+                'brand_id' => $nikeBrand->id,
             ],
             [
                 'name' => 'Adidas Yeezy 350 V2 Bred',
@@ -153,7 +132,8 @@ class ProductSeeder extends Seeder
                 'price' => 170.00,
                 'stock' => 50,
                 'image' => 'products/adidas_yeezy_350_v2_bred.png',
-                'category' => 'Adidas',
+                'category_id' => $shoesCategory->id,
+                'brand_id' => $adidasBrand->id,
             ],
             [
                 'name' => 'Vans Knu Skool',
@@ -161,24 +141,22 @@ class ProductSeeder extends Seeder
                 'price' => 80.00,
                 'stock' => 55,
                 'image' => 'products/vans_knu_skool.png',
-                'category' => 'Vans',
+                'category_id' => $shoesCategory->id,
+                'brand_id' => $vansBrand->id,
             ],
         ];
 
         foreach ($products as $productData) {
-            $category = $categories->where('name', $productData['category'])->first();
-
-            if ($category) {
-                Product::create([
-                    'category_id' => $category->id,
-                    'name' => $productData['name'],
-                    'slug' => Str::slug($productData['name']),
-                    'description' => $productData['description'],
-                    'price' => $productData['price'],
-                    'stock' => $productData['stock'],
-                    'image' => $productData['image'],
-                ]);
-            }
+            Product::create([
+                'category_id' => $productData['category_id'],
+                'brand_id' => $productData['brand_id'],
+                'name' => $productData['name'],
+                'slug' => Str::slug($productData['name']),
+                'description' => $productData['description'],
+                'price' => $productData['price'],
+                'stock' => $productData['stock'],
+                'image' => $productData['image'],
+            ]);
         }
     }
 }

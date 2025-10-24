@@ -56,10 +56,10 @@
                     <div
                         class="flex flex-col items-center bg-white rounded-xl shadow hover:shadow-lg p-6 transition cursor-pointer group">
                         <div class="bg-[#fcf7f1] p-4 rounded-full mb-2 group-hover:bg-[#faf3ea]">
-                            <img src="https://img.icons8.com/ios-filled/50/000000/football2.png" alt="Football"
+                            <img src="/storage/products/logo_jordan.png" alt="Football"
                                 class="w-8 h-8">
                         </div>
-                        <span class="font-semibold text-gray-700">Football</span>
+                        <span class="font-semibold text-gray-700">Jordan</span>
                     </div>
                     <div
                         class="flex flex-col items-center bg-white rounded-xl shadow hover:shadow-lg p-6 transition cursor-pointer group">
