@@ -1,8 +1,8 @@
 <x-app-layout>
     {{-- products --}}
 
-    <div class="w-fit mx-8 my-2 border-b-2">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+    <div class="w-fit mx-8 my-8">
+        <h2 class="font-semibold text-2xl text-gray-800 leading-tight">
             {{ __('Produk') }}
         </h2>
     </div>

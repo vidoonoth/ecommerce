@@ -28,16 +28,6 @@
         </div>
     </div>
 @else
-    <div id="chat-fab" class="fixed bottom-6 right-6 z-50">
-        <button id="open-chat-btn"
-            class="w-16 h-16 rounded-full bg-[#ffddc5] shadow-lg flex items-center justify-center hover:bg-[#ffd5b8] transition">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-black" fill="none" viewBox="0 0 24 24"
-                stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                    d="M8 10h.01M12 10h.01M16 10h.01M21 12c0 4.418-4.03 8-9 8s-9-3.582-9-8a9 9 0 1118 0z" />
-            </svg>
-        </button>
-    </div>
     <div id="chat-container"
         class="fixed bottom-6 right-6 w-80 bg-white shadow-lg rounded-lg flex flex-col overflow-hidden z-50 hidden">
         <div class="bg-gray-100 px-4 py-2 font-bold border-b flex items-center justify-between">
@@ -53,15 +43,13 @@
     </div>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            const openBtn = document.getElementById('open-chat-btn');
             const closeBtn = document.getElementById('close-chat-btn');
             const chatContainer = document.getElementById('chat-container');
-            openBtn.addEventListener('click', function() {
-                chatContainer.classList.remove('hidden');
-            });
-            closeBtn.addEventListener('click', function() {
-                chatContainer.classList.add('hidden');
-            });
+            if (closeBtn && chatContainer) {
+                closeBtn.addEventListener('click', function() {
+                    chatContainer.classList.add('hidden');
+                });
+            }
         });
     </script>
 @endif

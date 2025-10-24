@@ -2,7 +2,7 @@
     <div class="flex flex-col items-center justify-center min-h-screen ">
         <div class="w-full max-w-md p-8 bg-white rounded-2xl shadow-xl">
             <div class="mb-8 text-center">
-                <h1 class="text-3xl font-extrabold text-gray-900 mb-2 tracking-tight">Vorise</h1>
+                <h1 class="text-3xl font-extrabold text-gray-900 mb-2 tracking-tight">Votise</h1>
                 <p class="text-gray-500">Sign in to your account to continue</p>
             </div>
             <!-- Session Status -->

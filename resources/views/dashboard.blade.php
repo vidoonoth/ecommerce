@@ -14,7 +14,7 @@
                 <div class="flex flex-col md:flex-row items-center justify-between px-8 py-10">
                     <div class="flex-1">
                         <h1 class="text-3xl md:text-5xl font-bold text-gray-900 mb-4">Selamat Datang di <span
-                                class="text-[#e1c5a6]">Vorise</span></h1>
+                                class="text-[#e1c5a6]">Votise</span></h1>
                         <p class="text-lg text-gray-600 mb-6">Temukan sepatu terbaik untuk gaya dan aktivitasmu. Promo
                             diskon hingga <span class="font-bold text-slate-900">50%</span> hari ini!</p>
                         <a href="#all-products"
@@ -56,8 +56,7 @@
                     <div
                         class="flex flex-col items-center bg-white rounded-xl shadow hover:shadow-lg p-6 transition cursor-pointer group">
                         <div class="bg-[#fcf7f1] p-4 rounded-full mb-2 group-hover:bg-[#faf3ea]">
-                            <img src="/storage/products/logo_jordan.png" alt="Football"
-                                class="w-8 h-8">
+                            <img src="/storage/products/logo_jordan.png" alt="Football" class="w-8 h-8">
                         </div>
                         <span class="font-semibold text-gray-700">Jordan</span>
                     </div>
@@ -197,7 +196,7 @@
     {{-- footer --}}
     <footer class="bg-slate-50 text-black py-4">
         <div class="container mx-auto text-center">
-            <p>&copy; 2025 Vorise. All rights reserved.</p>
+            <p>&copy; 2025 Votise. All rights reserved.</p>
         </div>
     </footer>
 
@@ -309,22 +308,4 @@
         });
     </script>
 
-    @auth
-        @php
-            // Tentukan recipient_id (CS atau user lain)
-            $recipientId =
-                auth()->user()->is_cs ?? false
-                    ? App\Models\User::where('is_cs', false)->first()->id ?? 1
-                    : App\Models\User::where('is_cs', true)->first()->id ?? 1;
-        @endphp
-        <script>
-            window.Laravel = {
-                user: @json(auth()->user()),
-                chatRecipientId: {{ auth()->user()->is_cs ? 'null' : $recipientId }},
-                pusherKey: '{{ config('broadcasting.connections.pusher.key') }}',
-                pusherCluster: '{{ config('broadcasting.connections.pusher.options.cluster') }}'
-            };
-        </script>
-        @include('components.chat')
-    @endauth
 </x-app-layout>

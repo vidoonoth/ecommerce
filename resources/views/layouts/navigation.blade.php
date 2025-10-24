@@ -10,12 +10,12 @@
                     @auth('admin')
                         <a href="{{ route('admin.dashboard') }}">
                             {{-- <x-application-logo class="block h-9 w-auto fill-current text-gray-800" /> --}}
-                            <p class="font-bold text-2xl">Vorise</p>
+                            <p class="font-bold text-2xl">Votise</p>
                         </a>
                     @else
                         <a href="{{ route('dashboard') }}">
                             {{-- <x-application-logo class="block h-9 w-auto fill-current text-gray-800" /> --}}
-                            <p class="font-bold text-2xl">Vorise</p>
+                            <p class="font-bold text-2xl">Votise</p>
                         </a>
                     @endauth
                 </div>
@@ -64,6 +64,11 @@
                         <div class="hidden sm:flex">
                             <x-nav-link :href="route('orders.index')" :active="request()->routeIs('orders.index')">
                                 {{ __('Riwayat Pesanan') }}
+                            </x-nav-link>
+                        </div>
+                        <div class="hidden sm:flex">
+                            <x-nav-link :href="route('help.index')" :active="request()->routeIs('help.index')">
+                                {{ __('Help') }}
                             </x-nav-link>
                         </div>
                     </div>
@@ -163,6 +168,9 @@
                 </x-responsive-nav-link>
                 <x-responsive-nav-link :href="route('orders.index')" :active="request()->routeIs('orders.index')">
                     {{ __('Riwayat Pesanan') }}
+                </x-responsive-nav-link>
+                <x-responsive-nav-link :href="route('help.index')" :active="request()->routeIs('help.index')">
+                    {{ __('Help') }}
                 </x-responsive-nav-link>
             @endauth
         </div>
