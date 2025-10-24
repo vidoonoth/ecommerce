@@ -1,7 +1,7 @@
 <x-app-layout>
     {{-- products --}}
 
-    <div class="bg-white p-4 w-fit my-2 mx-2 rounded-lg">
+    <div class="bg-[#fffdfc] p-4 w-fit my-2 mx-2 rounded-lg">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
             {{ __('Produk') }}
         </h2>
@@ -11,11 +11,11 @@
     {{-- cards products --}}
 
     <div class="max-w-7xl mx-auto sm:px-2 lg:px-2 py-2">
-        <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-            <div class="p-6 bg-white  border-b border-gray-200">
+        <div class="bg-[#fffdfc] overflow-hidden shadow-sm sm:rounded-lg">
+            <div class="p-6 bg-[#fef8f5]  border-b border-gray-200">
                 <div id="product-container" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
                     @foreach ($products as $product)
-                        <div class="border border-gray-200 hover:bg-slate-300 cursor-pointer rounded-lg p-4">
+                        <div class="border border-gray-200 hover:bg-[#e4dbd1] cursor-pointer rounded-lg p-4">
                             <img src="{{ asset('storage/' . $product->image) }}" alt="{{ $product->name }}"
                                 class="w-full h-40 object-cover mb-4 rounded" loading="lazy">
                             <h3 class="text-lg font-semibold mb-2">{{ $product->name }}</h3>
@@ -25,8 +25,8 @@
                                 <form action="{{ route('cart.add', $product) }}" method="POST">
                                     @csrf
                                     <button type="submit"
-                                        class="bg-blue-400 text-white px-4 py-2 rounded hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500">
-                                        Add to Cart
+                                        class="bg-[#fcf7f1] border-[#ffd9b4] border text-slate-900 font-medium px-4 py-2 rounded hover:bg-[#fae7d1] focus:outline-none focus:ring-2 focus:ring-[#fdd7ab]">
+                                        Beli
                                     </button>
                                 </form>
                             </div>

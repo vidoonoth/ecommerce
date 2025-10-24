@@ -56,7 +56,7 @@
                     </table>
                 @else
                     <p class="text-gray-600">Anda belum memiliki riwayat pesanan.</p>
-                    <a href="{{ route('customer.products.index') }}" class="mt-4 inline-block bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-700">
+                    <a href="{{ route('customer.products.index') }}" class="mt-4 inline-block bg-[#fcf7f1] border-[#ffd9b4] text-black px-4 py-2 rounded-md hover:bg-[#fae7d1]">
                         Mulai Belanja
                     </a>
                 @endif

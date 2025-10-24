@@ -70,7 +70,7 @@
 
             <div class="mt-4 flex justify-end items-center">
                 <div class="text-lg font-semibold mr-4">Total: Rp{{ number_format($total, 0, ',', '.') }}</div>
-                <button id="pay-button" class="bg-blue-400 text-white px-4 py-2 rounded-md hover:bg-blue-700">Bayar</button>
+                <button id="pay-button" class="bg-[#fcf7f1] border-[#feead6] text-black px-4 py-2 rounded-md hover:bg-[#e4dbd1]">Bayar</button>
             </div>
         </div>
     </div>

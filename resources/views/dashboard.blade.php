@@ -6,19 +6,19 @@
     </x-slot> --}}
 
     <div class="py-2 px-2">
-        <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg py-4 px-4">
+        <div class="bg-[#fffdfc] overflow-hidden shadow-sm sm:rounded-lg py-4 px-4">
 
             {{-- HERO BANNER --}}
             <div
-                class="relative bg-gradient-to-r from-blue-100 via-white to-blue-50 rounded-xl mb-8 overflow-hidden shadow-sm">
+                class="relative bg-gradient-to-r from-[#fefbf9] via-[#fffbf6] to-[#f4ece2] rounded-xl mb-8 overflow-hidden shadow-sm">
                 <div class="flex flex-col md:flex-row items-center justify-between px-8 py-10">
                     <div class="flex-1">
                         <h1 class="text-3xl md:text-5xl font-bold text-gray-900 mb-4">Selamat Datang di <span
-                                class="text-blue-500">Vorise</span></h1>
+                                class="text-[#e1c5a6]">Vorise</span></h1>
                         <p class="text-lg text-gray-600 mb-6">Temukan sepatu terbaik untuk gaya dan aktivitasmu. Promo
-                            diskon hingga <span class="font-bold text-blue-600">50%</span> hari ini!</p>
+                            diskon hingga <span class="font-bold text-slate-900">50%</span> hari ini!</p>
                         <a href="#all-products"
-                            class="inline-block bg-blue-500 text-white px-6 py-3 rounded-lg shadow hover:bg-blue-600 transition font-semibold">Belanja
+                            class="inline-block bg-[#fffaf5] text-black px-6 py-3 rounded-lg shadow hover:bg-[#ded7ce] transition font-semibold">Belanja
                             Sekarang</a>
                     </div>
                     <div class="flex-1 flex justify-center md:justify-end">
@@ -39,7 +39,7 @@
                 <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
                     <div
                         class="flex flex-col items-center bg-white rounded-xl shadow hover:shadow-lg p-6 transition cursor-pointer group">
-                        <div class="bg-blue-100 p-4 rounded-full mb-2 group-hover:bg-blue-200">
+                        <div class="bg-[#fcf7f1] p-4 rounded-full mb-2 group-hover:bg-[#faf3ea]">
                             <img src="https://img.icons8.com/ios-filled/150/000000/sneakers.png" alt="Sepatu"
                                 class="w-8 h-8 object-contain drop-shadow-xl">
                         </div>
@@ -47,7 +47,7 @@
                     </div>
                     <div
                         class="flex flex-col items-center bg-white rounded-xl shadow hover:shadow-lg p-6 transition cursor-pointer group">
-                        <div class="bg-blue-100 p-4 rounded-full mb-2 group-hover:bg-blue-200">
+                        <div class="bg-[#fcf7f1] p-4 rounded-full mb-2 group-hover:bg-[#faf3ea]">
                             <img src="https://img.icons8.com/ios-filled/50/000000/basketball.png" alt="Basket"
                                 class="w-8 h-8">
                         </div>
@@ -55,7 +55,7 @@
                     </div>
                     <div
                         class="flex flex-col items-center bg-white rounded-xl shadow hover:shadow-lg p-6 transition cursor-pointer group">
-                        <div class="bg-blue-100 p-4 rounded-full mb-2 group-hover:bg-blue-200">
+                        <div class="bg-[#fcf7f1] p-4 rounded-full mb-2 group-hover:bg-[#faf3ea]">
                             <img src="https://img.icons8.com/ios-filled/50/000000/football2.png" alt="Football"
                                 class="w-8 h-8">
                         </div>
@@ -63,9 +63,9 @@
                     </div>
                     <div
                         class="flex flex-col items-center bg-white rounded-xl shadow hover:shadow-lg p-6 transition cursor-pointer group">
-                        <div class="bg-blue-100 p-4 rounded-full mb-2 group-hover:bg-blue-200">
-                            <img src="https://img.icons8.com/?size=100&id=jnXxLIuR2wXW&format=png&color=000000" alt="Lifestyle"
-                                class="w-8 h-8">
+                        <div class="bg-[#fcf7f1] p-4 rounded-full mb-2 group-hover:bg-[#faf3ea]">
+                            <img src="https://img.icons8.com/?size=100&id=jnXxLIuR2wXW&format=png&color=000000"
+                                alt="Lifestyle" class="w-8 h-8">
                         </div>
                         <span class="font-semibold text-gray-700">Lifestyle</span>
                     </div>
@@ -75,14 +75,14 @@
             {{-- all products --}}
             <div id="all-products" class="flex flex-col mt-8">
                 <div class="flex justify-between mb-4">
-                    <p class="font-bold">Semua Produk</p>
+                    <h2 class="text-2xl font-bold text-gray-900 mb-4">Semua Produk</h2>
                 </div>
                 <div class="relative">
                     <div id="product-carousel"
                         class="flex overflow-x-auto space-x-4 pb-4 scroll-smooth snap-x snap-mandatory px-4 mx-14">
                         @foreach ($products as $product)
                             <div
-                                class="w-64 snap-start bg-white border border-gray-200 hover:shadow-lg hover:scale-105 transform transition p-4 rounded-lg h-80 flex flex-col justify-between">
+                                class="w-64 snap-start bg-white border border-gray-200 hover:shadow-lg hover:scale-105 transform transition p-4 rounded-lg h-80 flex flex-col hover:cursor-pointer justify-between">
                                 <div>
                                     <img src="{{ asset('storage/' . $product->image) }}" alt="{{ $product->name }}"
                                         class="w-full h-36 object-cover mb-4 rounded-lg" loading="lazy">
@@ -98,8 +98,8 @@
                                         class="add-to-cart-form">
                                         @csrf
                                         <button type="submit"
-                                            class="bg-blue-500 text-white px-3 py-1 rounded hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-400 text-sm">
-                                            Add
+                                            class="bg-[#fcf7f1] border border-[#fee8d3] text-black px-3 py-1 rounded hover:bg-[#e7e1db] focus:outline-none focus:ring-2 focus:ring-[#e7dfd6] text-sm">
+                                            Beli
                                         </button>
                                     </form>
                                 </div>
