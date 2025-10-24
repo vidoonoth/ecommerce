@@ -17,9 +17,10 @@ class ProductSeeder extends Seeder
     public function run(): void
     {
         // Ensure categories exist or create them
-        $shoesCategory = Category::firstOrCreate(['name' => 'Shoes'], ['slug' => Str::slug('Shoes')]);
+        $runningCategory = Category::firstOrCreate(['name' => 'running'], ['slug' => Str::slug('running')]);
         $jordanCategory = Category::firstOrCreate(['name' => 'jordan'], ['slug' => Str::slug('jordan')]);
         $lifestyleCategory = Category::firstOrCreate(['name' => 'lifestyle'], ['slug' => Str::slug('lifestyle')]);
+        $basketCategory = Category::firstOrCreate(['name' => 'basket'], ['slug' => Str::slug('basket')]);
 
         // Ensure brands exist or create them
         $nikeBrand = Brand::firstOrCreate(['name' => 'Nike']);
@@ -29,7 +30,7 @@ class ProductSeeder extends Seeder
         $products = [
             [
                 'name' => 'Nike Air Jordan 1 2022',
-                'description' => 'Comfortable and stylish Nike Air Jordan 1 shoes.',
+                'description' => 'Comfortable and stylish Nike Air Jordan 1 running.',
                 'price' => 150.00,
                 'stock' => 50,
                 'image' => 'products/nike_air_jordan_1_2022.png',
@@ -51,7 +52,7 @@ class ProductSeeder extends Seeder
                 'price' => 180.00,
                 'stock' => 40,
                 'image' => 'products/jordan_tatum_4.png',
-                'category_id' => $shoesCategory->id,
+                'category_id' => $runningCategory->id,
                 'brand_id' => $nikeBrand->id,
             ],
             [
@@ -60,7 +61,7 @@ class ProductSeeder extends Seeder
                 'price' => 100.00,
                 'stock' => 60,
                 'image' => 'products/nike_blazer_low_platform.png',
-                'category_id' => $shoesCategory->id,
+                'category_id' => $runningCategory->id,
                 'brand_id' => $nikeBrand->id,
             ],
             [
@@ -69,7 +70,7 @@ class ProductSeeder extends Seeder
                 'price' => 160.00,
                 'stock' => 55,
                 'image' => 'products/jordan_cmft_era.png',
-                'category_id' => $shoesCategory->id,
+                'category_id' => $runningCategory->id,
                 'brand_id' => $nikeBrand->id,
             ],
             [
@@ -78,7 +79,7 @@ class ProductSeeder extends Seeder
                 'price' => 140.00,
                 'stock' => 48,
                 'image' => 'products/air_jordan_1_high_g.png',
-                'category_id' => $shoesCategory->id,
+                'category_id' => $runningCategory->id,
                 'brand_id' => $nikeBrand->id,
             ],
             [
@@ -87,7 +88,7 @@ class ProductSeeder extends Seeder
                 'price' => 80.00,
                 'stock' => 70,
                 'image' => 'products/tatum_3_pf_sidewalk_chalk.png',
-                'category_id' => $shoesCategory->id,
+                'category_id' => $runningCategory->id,
                 'brand_id' => $nikeBrand->id,
             ],
             [
@@ -96,7 +97,7 @@ class ProductSeeder extends Seeder
                 'price' => 90.00,
                 'stock' => 65,
                 'image' => 'products/air_jordan_1_low_se.png',
-                'category_id' => $shoesCategory->id,
+                'category_id' => $runningCategory->id,
                 'brand_id' => $nikeBrand->id,
             ],
             [
@@ -105,7 +106,7 @@ class ProductSeeder extends Seeder
                 'price' => 70.00,
                 'stock' => 80,
                 'image' => 'products/tatum_4_pf.png',
-                'category_id' => $shoesCategory->id,
+                'category_id' => $runningCategory->id,
                 'brand_id' => $nikeBrand->id,
             ],
             [
@@ -114,7 +115,7 @@ class ProductSeeder extends Seeder
                 'price' => 75.00,
                 'stock' => 75,
                 'image' => 'products/air_jordan_1_mid.png',
-                'category_id' => $shoesCategory->id,
+                'category_id' => $runningCategory->id,
                 'brand_id' => $nikeBrand->id,
             ],
             [
@@ -123,7 +124,7 @@ class ProductSeeder extends Seeder
                 'price' => 60.00,
                 'stock' => 90,
                 'image' => 'products/jumpman_mvp.png',
-                'category_id' => $shoesCategory->id,
+                'category_id' => $runningCategory->id,
                 'brand_id' => $nikeBrand->id,
             ],
             [
@@ -132,7 +133,7 @@ class ProductSeeder extends Seeder
                 'price' => 170.00,
                 'stock' => 50,
                 'image' => 'products/adidas_yeezy_350_v2_bred.png',
-                'category_id' => $shoesCategory->id,
+                'category_id' => $runningCategory->id,
                 'brand_id' => $adidasBrand->id,
             ],
             [
@@ -141,7 +142,7 @@ class ProductSeeder extends Seeder
                 'price' => 80.00,
                 'stock' => 55,
                 'image' => 'products/vans_knu_skool.png',
-                'category_id' => $shoesCategory->id,
+                'category_id' => $runningCategory->id,
                 'brand_id' => $vansBrand->id,
             ],
         ];

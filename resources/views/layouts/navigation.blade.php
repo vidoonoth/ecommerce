@@ -52,6 +52,11 @@
                             </x-nav-link>
                         </div>
                         <div class="hidden sm:flex">
+                            <x-nav-link :href="route('customer.categories.index')" :active="request()->routeIs('customer.categories.index')">
+                                {{ __('Kategori') }}
+                            </x-nav-link>
+                        </div>
+                        <div class="hidden sm:flex">
                             <x-nav-link :href="route('cart.index')" :active="request()->routeIs('cart.index')">
                                 {{ __('Keranjang') }}
                             </x-nav-link>

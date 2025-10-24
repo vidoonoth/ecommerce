@@ -60,6 +60,8 @@ Route::middleware('auth')->group(function () {
 
 // Customer product route
 Route::get('/products', [CustomerProductController::class, 'index'])->name('customer.products.index');
+Route::get('/categories', [CustomerProductController::class, 'categoriesIndex'])->name('customer.categories.index');
+Route::get('/products/category/{categorySlug}', [CustomerProductController::class, 'productsByCategory'])->name('customer.products.byCategory');
 
 require __DIR__ . '/auth.php';
 require __DIR__ . '/admin.php';

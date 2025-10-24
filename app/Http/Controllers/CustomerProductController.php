@@ -19,4 +19,17 @@ class CustomerProductController extends Controller
         $products = Product::with(['category', 'brand'])->latest()->paginate(12);
         return Response::json($products);
     }
+
+    public function categoriesIndex()
+    {
+        $categories = \App\Models\Category::all();
+        return view('categories', compact('categories'));
+    }
+
+    public function productsByCategory($categorySlug)
+    {
+        $category = \App\Models\Category::where('slug', $categorySlug)->firstOrFail();
+        $products = Product::with(['category', 'brand'])->where('category_id', $category->id)->latest()->paginate(12);
+        return view('products', compact('products'));
+    }
 }
