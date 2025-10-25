@@ -65,6 +65,8 @@ Route::middleware('auth')->group(function () {
 Route::get('/products', [CustomerProductController::class, 'index'])->name('customer.products.index');
 Route::get('/categories', [CustomerProductController::class, 'categoriesIndex'])->name('customer.categories.index');
 Route::get('/products/category/{categorySlug}', [CustomerProductController::class, 'productsByCategory'])->name('customer.products.byCategory');
+Route::get('/brands', [CustomerProductController::class, 'brandsIndex'])->name('customer.brands.index');
+Route::get('/products/brand/{brandId}', [CustomerProductController::class, 'productsByBrand'])->name('customer.products.byBrand');
 
 require __DIR__ . '/auth.php';
 require __DIR__ . '/admin.php';
