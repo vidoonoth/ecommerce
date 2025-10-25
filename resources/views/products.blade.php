@@ -114,8 +114,62 @@
     </script>
             </div>
         </div>
+    </div>
 
+    {{-- MODAL DETAIL PRODUK --}}
+    <div id="product-modal" class="fixed inset-0 z-50 items-center justify-center bg-black bg-opacity-40 hidden">
+        <div class="bg-white rounded-xl shadow-lg max-w-sm w-full p-6 relative">
+            <button id="close-modal"
+                class="absolute top-2 right-2 text-gray-400 hover:text-gray-700 text-2xl font-bold">&times;</button>
+            <img id="modal-image" src="" alt="" class="w-full h-40 object-contain rounded mb-4">
+            <h3 id="modal-name" class="text-xl font-bold mb-2"></h3>
+            <p id="modal-desc" class="text-gray-600 mb-4"></p>
+            <div class="flex items-center justify-between">
+                <span id="modal-price" class="text-lg font-bold text-gray-900"></span>
+            </div>
+        </div>
+    </div>
 
-
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Modal logic
+            const modal = document.getElementById('product-modal');
+            const closeModal = document.getElementById('close-modal');
+            const modalImage = document.getElementById('modal-image');
+            const modalName = document.getElementById('modal-name');
+            const modalDesc = document.getElementById('modal-desc');
+            const modalPrice = document.getElementById('modal-price');
+            // Card click event
+            document.querySelectorAll('#product-container > div').forEach(card => {
+                card.addEventListener('click', function(e) {
+                    // Prevent modal if Add button or form is clicked
+                    if (e.target.closest('form') || e.target.closest('button')) return;
+                    const img = card.querySelector('img');
+                    const name = card.querySelector('h3').textContent;
+                    const desc = card.querySelector('p:nth-of-type(3)').textContent; // Adjusted selector for description
+                    const price = card.querySelector('span').textContent;
+                    modalImage.src = img.src;
+                    modalImage.alt = name;
+                    modalName.textContent = name;
+                    modalDesc.textContent = desc;
+                    modalPrice.textContent = price;
+                    modal.classList.remove('hidden');
+                    modal.classList.add('flex');
+                });
+            });
+            // Close modal
+            closeModal.addEventListener('click', function() {
+                modal.classList.add('hidden');
+                modal.classList.remove('flex');
+            });
+            // Click outside modal
+            modal.addEventListener('click', function(e) {
+                if (e.target === modal) {
+                    modal.classList.add('hidden');
+                    modal.classList.remove('flex');
+                }
+            });
+        });
+    </script>
 
 </x-app-layout>
