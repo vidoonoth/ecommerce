@@ -50,7 +50,6 @@ Route::middleware('auth')->group(function () {
 
     // Checkout routes
     Route::get('/checkout', [CheckoutController::class, 'index'])->name('checkout.index');
-    Route::post('/checkout/callback', [CheckoutController::class, 'callback'])->name('checkout.callback');
 
     // Order routes
     Route::get('/orders', [OrderController::class, 'index'])->name('orders.index');
@@ -66,6 +65,7 @@ Route::get('/products', [CustomerProductController::class, 'index'])->name('cust
 Route::get('/categories', [CustomerProductController::class, 'categoriesIndex'])->name('customer.categories.index');
 Route::get('/products/category/{categorySlug}', [CustomerProductController::class, 'productsByCategory'])->name('customer.products.byCategory');
 Route::get('/brands', [CustomerProductController::class, 'brandsIndex'])->name('customer.brands.index');
+Route::post('/checkout/callback', [CheckoutController::class, 'callback'])->name('checkout.callback'); // Moved outside auth middleware
 Route::get('/products/brand/{brandId}', [CustomerProductController::class, 'productsByBrand'])->name('customer.products.byBrand');
 
 require __DIR__ . '/auth.php';

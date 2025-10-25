@@ -8,6 +8,7 @@ use App\Models\Product;
 use Illuminate\Support\Facades\Auth;
 use Midtrans\Config;
 use Midtrans\Snap;
+use Illuminate\Support\Facades\Log; // Add this line
 
 class CheckoutController extends Controller
 {
@@ -34,14 +35,29 @@ class CheckoutController extends Controller
         Config::$isSanitized = config('midtrans.is_sanitized');
         Config::$is3ds = config('midtrans.is_3ds');
 
+        $orderId = uniqid(); // Generate order ID once
+
+        // Create a pending checkout record in your database
+        $checkout = Checkout::create([
+            'user_id' => Auth::id(),
+            'order_id' => $orderId,
+            'gross_amount' => $total,
+            'transaction_status' => 'pending_payment', // Initial status
+            'payment_type' => null, // Will be updated by callback
+            'transaction_id' => null, // Will be updated by callback
+            'status_message' => 'Waiting for payment',
+            'json_data' => null, // Will be updated by callback
+        ]);
+
         $transaction_details = [
-            'order_id' => uniqid(),
+            'order_id' => $orderId,
             'gross_amount' => (int) $total, // Cast to integer
         ];
 
         $customer_details = [
             'first_name' => Auth::user()->name,
             'email' => Auth::user()->email,
+            'customer_id' => Auth::id(),
         ];
 
         $item_details = [];
@@ -67,14 +83,32 @@ class CheckoutController extends Controller
 
     public function callback(Request $request)
     {
+        Log::info('Midtrans callback received.', $request->all());
+
         $serverKey = config('midtrans.server_key');
+        Log::info('Midtrans Server Key from config: ' . $serverKey);
+        Log::info('Request data for signature: order_id=' . $request->order_id . ', status_code=' . $request->status_code . ', gross_amount=' . $request->gross_amount);
+
         $hashed = hash("sha512", $request->order_id . $request->status_code . $request->gross_amount . $serverKey);
 
+        Log::info('Calculated Hashed Signature: ' . $hashed);
+        Log::info('Received Signature Key: ' . $request->signature_key);
+
         if ($hashed == $request->signature_key) {
+            Log::info('Signature key matched for order_id: ' . $request->order_id);
+
+            // Find the existing checkout record
+            $checkout = Checkout::where('order_id', $request->order_id)->first();
+
+            if (!$checkout) {
+                Log::error('Checkout record not found for order_id: ' . $request->order_id);
+                return response()->json(['message' => 'Transaction failed: Order not found'], 404);
+            }
+
             if ($request->transaction_status == 'capture' || $request->transaction_status == 'settlement') {
-                $checkout = Checkout::create([
-                    'user_id' => Auth::id(),
-                    'order_id' => $request->order_id,
+                Log::info('Transaction status is capture or settlement for order_id: ' . $request->order_id);
+
+                $checkout->update([
                     'gross_amount' => $request->gross_amount,
                     'transaction_status' => $request->transaction_status,
                     'payment_type' => $request->payment_type,
@@ -83,11 +117,28 @@ class CheckoutController extends Controller
                     'json_data' => json_encode($request->all()),
                 ]);
 
-                // Clear cart
-                session()->forget('cart');
+                Log::info('Checkout record updated successfully for order_id: ' . $request->order_id . ' with user_id: ' . $checkout->user_id);
+
+                // Clear cart for the user associated with this order
+                session()->forget('cart'); // This clears the current session's cart, which might not be the user who initiated the payment if they are not logged in.
+                                          // A more robust solution would be to clear the cart based on user_id.
+                Log::info('Cart cleared for user_id: ' . $checkout->user_id);
 
                 return response()->json(['message' => 'Transaction successful'], 200);
+            } else {
+                Log::info('Transaction status is not capture or settlement for order_id: ' . $request->order_id . '. Status: ' . $request->transaction_status);
+                // Update the checkout record with the non-successful status
+                $checkout->update([
+                    'transaction_status' => $request->transaction_status,
+                    'status_message' => $request->status_message,
+                    'json_data' => json_encode($request->all()),
+                ]);
+                Log::info('Checkout record updated with non-successful status for order_id: ' . $request->order_id . '. Status: ' . $request->transaction_status);
             }
+        } else {
+            Log::warning('Signature key mismatch for order_id: ' . $request->order_id);
+            Log::warning('Expected Hashed Signature: ' . $hashed);
+            Log::warning('Received Signature Key: ' . $request->signature_key);
         }
         return response()->json(['message' => 'Transaction failed'], 400);
     }
