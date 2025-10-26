@@ -24,32 +24,8 @@
             <!-- Navigation Links -->
             <div class="flex">
                 @auth('admin')
-                    {{-- <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                        <x-nav-link :href="route('admin.dashboard')" :active="request()->routeIs('admin.dashboard')">
-                            {{ __('Admin Dashboard') }}
-                        </x-nav-link>
-                    </div> --}}
-                    <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                        <x-nav-link :href="route('admin.categories.index')" :active="request()->routeIs('admin.categories.index')">
-                            {{ __('Categories') }}
-                        </x-nav-link>
-                    </div>
-                    <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                        <x-nav-link :href="route('admin.products.index')" :active="request()->routeIs('admin.products.index')">
-                            {{ __('Products') }}
-                        </x-nav-link>
-                    </div>
-                    <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                        <x-nav-link :href="route('admin.orders.index')" :active="request()->routeIs('admin.orders.index')">
-                            {{ __('Orders') }}
-                        </x-nav-link>
-                    </div>
+                    {{-- Admin navigation links are now in admin-sidenav.blade.php --}}
                 @else
-                    {{-- <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                        <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
-                            {{ __('Dashboard') }}
-                        </x-nav-link>
-                    </div> --}}
                     <div class="hidden sm:flex gap-4">
                         <div class="hidden sm:flex">
                             <x-nav-link :href="route('customer.products.index')" :active="request()->routeIs('customer.products.index')">
