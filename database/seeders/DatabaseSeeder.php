@@ -29,6 +29,13 @@ class DatabaseSeeder extends Seeder
             'password' => bcrypt('password'),
             'is_cs' => false,
         ]);
+        // alfn
+        User::factory()->create([
+            'name' => 'Alfin',
+            'email' => 'alfinvidoo@gmail.com',
+            'password' => bcrypt('password'),
+            'is_cs' => false,
+        ]);
 
         User::factory()->create([
             'name' => 'a',
