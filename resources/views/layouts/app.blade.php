@@ -21,8 +21,12 @@
 
 <body class="font-sans antialiased">
     <div class="min-h-screen bg-[#fefbf9]">
-        @include('layouts.subnavigation')
-        @include('layouts.navigation')
+        @auth('admin')
+            @include('layouts.navigation')
+        @else
+            @include('layouts.subnavigation')
+            @include('layouts.navigation')
+        @endauth
 
         <!-- Page Heading -->
         @isset($header)

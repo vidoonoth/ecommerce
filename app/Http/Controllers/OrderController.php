@@ -10,7 +10,7 @@ class OrderController extends Controller
 {
     public function index()
     {
-        $orders = Checkout::where('user_id', Auth::id())->orderBy('created_at', 'desc')->get();
+        $orders = Checkout::with('products')->where('user_id', Auth::id())->orderBy('created_at', 'desc')->get();
         return view('orders.index', compact('orders'));
     }
 }

@@ -39,6 +39,11 @@
                             {{ __('Products') }}
                         </x-nav-link>
                     </div>
+                    <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                        <x-nav-link :href="route('admin.orders.index')" :active="request()->routeIs('admin.orders.index')">
+                            {{ __('Orders') }}
+                        </x-nav-link>
+                    </div>
                 @else
                     {{-- <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
                         <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
@@ -69,9 +74,21 @@
             <!-- Settings Dropdown -->
             <div class="hidden sm:flex sm:items-center sm:ms-6">
                 <div class="hidden sm:flex">
-                    <x-nav-link :href="route('cart.index')" :active="request()->routeIs('cart.index')">
-                        {!! '<i class="fi fi-rr-shopping-cart"></i>' !!}
-                    </x-nav-link>
+                    @auth('admin')
+                    {{-- logout --}}
+                        <form method="POST" action="{{ route('admin.logout') }}">
+                            @csrf
+                            <x-nav-link :href="route('admin.logout')"
+                                onclick="event.preventDefault();
+                                        this.closest('form').submit();">
+                                {!! '<i class="fi fi-rr-exit"></i>' !!}
+                            </x-nav-link>
+                        </form>
+                    @else
+                        <x-nav-link :href="route('cart.index')" :active="request()->routeIs('cart.index')">
+                            {!! '<i class="fi fi-rr-shopping-cart"></i>' !!}
+                        </x-nav-link>
+                    @endauth
                 </div>
             </div>
 
@@ -131,14 +148,6 @@
 
                 <div class="mt-3 space-y-1">
                     @auth('admin')
-                        <form method="POST" action="{{ route('admin.logout') }}">
-                            @csrf
-                            <x-responsive-nav-link :href="route('admin.logout')"
-                                onclick="event.preventDefault();
-                                        this.closest('form').submit();">
-                                {{ __('Log Out Admin') }}
-                            </x-responsive-nav-link>
-                        </form>
                     @else
                         <x-responsive-nav-link :href="route('profile.edit')">
                             {{ __('Profile') }}

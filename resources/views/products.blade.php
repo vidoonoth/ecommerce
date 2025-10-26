@@ -19,8 +19,8 @@
                             <img src="{{ asset('storage/' . $product->image) }}" alt="{{ $product->name }}"
                                 class="w-full h-40 object-cover mb-4 rounded" loading="lazy">
                             <h3 class="text-lg font-semibold mb-2">{{ $product->name }}</h3>
-                            <p class="text-gray-600 text-sm mb-1">Kategori: {{ $product->category->name }}</p>
-                            <p class="text-gray-600 text-sm mb-4">Brand: {{ $product->brand->name }}</p>
+                            <p class="text-gray-600 text-sm mb-1">Kategori: {{ $product->category->name ?? 'N/A' }}</p>
+                            <p class="text-gray-600 text-sm mb-4">Brand: {{ $product->brand->name ?? 'N/A' }}</p>
                             <p class="text-gray-600 mb-4">{{ Str::limit($product->description, 100) }}</p>
                             <div class="flex items-center justify-between">
                                 <span class="text-xl font-bold text-gray-900">Rp{{ number_format($product->price, 0, ',', '.') }}</span>

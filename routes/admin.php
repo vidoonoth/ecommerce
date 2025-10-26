@@ -26,4 +26,5 @@ Route::middleware('auth:admin')->group(function () {
 
     Route::resource('admin/categories', CategoryController::class)->names('admin.categories');
     Route::resource('admin/products', ProductController::class)->names('admin.products');
+    Route::resource('admin/orders', App\Http\Controllers\Admin\AdminOrderController::class)->names('admin.orders');
 });
