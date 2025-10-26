@@ -93,7 +93,7 @@
                     @else
                         {{-- Jika belum login --}}
                         <a href="{{ route('login') }}"
-                            class="inline-flex items-center px-4 py-2 bg-slate-100 border border-transparent rounded-md font-semibold text-xs text-black focus:text-slate-100 uppercase tracking-widest hover:bg-slate-300 focus:bg-blue-400 active:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition ease-in-out duration-150">
+                            class="inline-flex items-center px-2 bg-slate-50 border border-slate-500 rounded-md font-semibold text-sm text-black focus:text-slate-100 tracking-widest hover:bg-slate-300 focus:bg-blue-400 active:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition ease-in-out duration-150">
                             {{ __('Login') }}
                         </a>
                     @endif
