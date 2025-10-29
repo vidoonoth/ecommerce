@@ -15,7 +15,9 @@
                     @else
                         <a href="{{ route('dashboard') }}">
                             {{-- <x-application-logo class="block h-9 w-auto fill-current text-gray-800" /> --}}
-                            <p class="font-bold text-2xl">Votise</p>
+                            {{-- <p class="font-bold text-2xl">Votise</p> --}}
+                            <img src="{{ asset('storage/logo/votise.png') }}" alt="Logo Votise" class="hidden lg:flex w-32 h-auto">
+                            <img src="{{ asset('storage/logo/v.png') }}" alt="Logo Votise" class="flex lg:hidden w-[90px] h-auto">
                         </a>
                     @endauth
                 </div>

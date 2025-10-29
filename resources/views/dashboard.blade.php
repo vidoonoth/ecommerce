@@ -194,7 +194,7 @@
     </div>
 
     {{-- footer --}}
-    <footer class="bg-slate-50 text-black py-4">
+    <footer class="bg-[#fefbf9] text-black py-4">
         <div class="container mx-auto text-center">
             <p>&copy; 2025 Votise. All rights reserved.</p>
         </div>
