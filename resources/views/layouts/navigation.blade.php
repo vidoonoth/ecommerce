@@ -127,7 +127,7 @@
                 <div class="mt-3 space-y-1">
                     @auth('admin')
                     @else
-                        <x-responsive-nav-link :href="route('profile.edit')">
+                        <x-responsive-nav-link :href="route('profile.index')">
                             {{ __('Profile') }}
                         </x-responsive-nav-link>
 
