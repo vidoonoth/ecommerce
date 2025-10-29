@@ -15,6 +15,8 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@flaticon/flaticon-uicons@3.3.1/css/all/all.min.css">
     <script src="https://unpkg.com/alpinejs" defer></script>
 
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+
     <!-- Scripts -->
     @vite(['resources/css/app.css', 'resources/js/app.js', 'resources/js/chat.js'])
 </head>
@@ -57,6 +59,32 @@
             </main>
         @endauth
     </div>
+
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+
+    <script type="module">
+        @if (session('success'))
+            Toastify({
+                text: "{{ session('success') }}",
+                duration: 1000,
+                close: true,
+                gravity: "top",
+                position: "right",
+                backgroundColor: "linear-gradient(to right, #16a34a, #4ade80)",
+            }).showToast();
+        @endif
+
+        @if (session('error'))
+            Toastify({
+                text: "{{ session('error') }}",
+                duration: 1000,
+                close: true,
+                gravity: "top",
+                position: "right",
+                backgroundColor: "linear-gradient(to right, #dc2626, #ef4444)",
+            }).showToast();
+        @endif
+    </script>
 
     @stack('scripts')
 </body>

@@ -35,7 +35,15 @@
 
             {{-- KATEGORI --}}
             <div class="mt-8 mb-8">
-                <h2 class="text-2xl font-bold text-gray-900 mb-4">Kategori Populer</h2>
+                <div class="flex justify-between mb-4 text-center">
+                    <h2 class="text-2xl font-bold text-gray-900 mb-4">Kategori Populer</h2>
+                    <div class="text-center">
+                        <a href="{{ route('customer.categories.index') }}"
+                            class="inline-block bg-[#fcf7f1] border border-[#fee8d3] text-[14px] text-black px-3 py-3 rounded-lg hover:bg-[#e7e1db] transition font-medium">
+                            Lihat Semua
+                        </a>
+                    </div>
+                </div>
                 <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
                     <div
                         class="flex flex-col items-center bg-white rounded-xl shadow hover:shadow-lg p-6 transition cursor-pointer group">
@@ -69,12 +77,19 @@
                         <span class="font-semibold text-gray-700">Lifestyle</span>
                     </div>
                 </div>
+
             </div>
 
             {{-- all products --}}
             <div id="all-products" class="flex flex-col mt-8">
-                <div class="flex justify-between mb-4">
-                    <h2 class="text-2xl font-bold text-gray-900 mb-4">Semua Produk</h2>
+                <div class="flex justify-between mb-4 text-center">
+                    <h2 class="text-2xl font-bold text-gray-900 mb-4">Produk</h2>
+                    <div class="text-center">
+                        <a href="{{ route('customer.products.index') }}"
+                            class="inline-block bg-[#fcf7f1] border border-[#fee8d3] text-[14px] text-black px-3 py-3 rounded-lg hover:bg-[#e7e1db] transition font-medium">
+                            Lihat Semua
+                        </a>
+                    </div>
                 </div>
                 <div class="relative">
                     <div id="product-carousel"
